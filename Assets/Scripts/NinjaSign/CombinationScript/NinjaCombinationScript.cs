@@ -1,4 +1,5 @@
 ﻿using UnityEngine.SceneManagement;
+
 public struct NinjaCombinationScriptData {
 	public Scene Scene;
 }

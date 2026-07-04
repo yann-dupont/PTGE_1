@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 [Serializable]
 public class NinjaCombinationScript_Test1 : INinjaCombinationScript {

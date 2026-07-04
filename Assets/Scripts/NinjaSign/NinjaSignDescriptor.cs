@@ -11,9 +11,9 @@ public class NinjaSignDescriptor : ScriptableObject {
 	private string displayName = "";
 
 	[SerializeField]
-	private Texture2D icon = null;
+	private Sprite icon = null;
 	
 	public List<InputActionReference> Actions => actions;
 	public string DisplayName => displayName;
-	public Texture2D Icon => icon;
+	public Sprite Icon => icon;
 }

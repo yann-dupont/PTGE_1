@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 8078437194058717475, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   - {fileID: -3217167149237019989, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   displayName: Communication
-  icon: {fileID: 2800000, guid: 33e291f07e3d3dc4bb3baef52b27f452, type: 3}
+  icon: {fileID: 21300000, guid: 33e291f07e3d3dc4bb3baef52b27f452, type: 3}
