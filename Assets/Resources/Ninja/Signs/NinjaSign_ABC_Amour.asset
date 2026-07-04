@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: -3217167149237019989, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   - {fileID: 4382386215461828098, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   displayName: Amour
-  icon: {fileID: 0}
+  icon: {fileID: 2800000, guid: 06c0881b8776cca47a783ec59628ca28, type: 3}
