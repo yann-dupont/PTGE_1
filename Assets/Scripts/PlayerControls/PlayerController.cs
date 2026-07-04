@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public partial class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float maxSpeed = 6f;
@@ -41,10 +41,12 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
+        OnEnable_NinjaSigns();
     }
 
     private void OnDisable()
     {
+        OnDisable_NinjaSigns();
         input.Disable();
     }
 
