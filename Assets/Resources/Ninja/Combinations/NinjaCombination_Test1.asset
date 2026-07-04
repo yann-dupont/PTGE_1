@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e36e55683f80b0245a161ea0343e5307, type: 2}
   - {fileID: 11400000, guid: e36e55683f80b0245a161ea0343e5307, type: 2}
   displayName: Test 1
+  scriptType: NinjaCombinationScript_Test1

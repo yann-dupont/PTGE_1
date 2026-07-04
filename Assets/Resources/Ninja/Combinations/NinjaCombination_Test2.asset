@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NinjaSignCombination
   signsToActivate:
   - {fileID: 11400000, guid: fa93f038460239949a9d11477394a9c9, type: 2}
-  - {fileID: 11400000, guid: 695c18616bf22e0418616ce9664b2a25, type: 2}
+  - {fileID: 11400000, guid: e36e55683f80b0245a161ea0343e5307, type: 2}
   displayName: Test 2
+  scriptType: NinjaCombinationScript_Test2

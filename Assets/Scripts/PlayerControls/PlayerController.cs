@@ -58,6 +58,8 @@ public partial class PlayerController : MonoBehaviour
         {
             TryDash();
         }
+        
+        Update_NinjaSigns();
     }
 
     private void FixedUpdate()

@@ -13,7 +13,7 @@ public class NinjaSignDescriptor : ScriptableObject {
 	[SerializeField]
 	private Texture2D icon = null;
 	
-	public IEnumerable<InputActionReference> Actions => actions;
+	public List<InputActionReference> Actions => actions;
 	public string DisplayName => displayName;
 	public Texture2D Icon => icon;
 }

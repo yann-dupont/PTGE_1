@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class NinjaCombinationScript_Test1 : INinjaCombinationScript {
 	public void Activate(NinjaCombinationScriptData data) {
 		Debug.Log("Test1 activated.");
