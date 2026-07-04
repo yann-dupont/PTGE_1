@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,7 @@ public class NinjaSignVessel : MonoBehaviour {
 	private NinjaSignCombination[] ninjaSignCombinations = Array.Empty<NinjaSignCombination>();
 	
 	private NinjaSignDescriptor[] ninjaSignArray = new NinjaSignDescriptor[MAX_NINJA_SIGNS];
+	private int currentNinjaSignIndex = 0;
 
 	public static bool HasIsntance(Scene forScene) {
 		return instances.ContainsKey(forScene);
@@ -51,7 +53,76 @@ public class NinjaSignVessel : MonoBehaviour {
 		ninjaSignCombinations = Resources.LoadAll<NinjaSignCombination>(NINJA_COMBINATIONS_RESOURCE_PATH);
 	}
 
-	public void AddNinjaSign(NinjaSignDescriptor ninjaSign) {
-		Debug.Log("AddNinjaSign: " + ninjaSign.DisplayName);
+	public bool AddNinjaSign(NinjaSignDescriptor ninjaSign) {
+		if (ninjaSign == null) {
+			return false;
+		}
+		
+		ninjaSignArray[currentNinjaSignIndex] = ninjaSign;
+		OnNinjaSignAdded?.Invoke(ninjaSign);
+		Debug.Log($"Sign added '{ninjaSign.DisplayName}'.");	
+		
+		NinjaSignCombination foundCombination = CheckForNinjaSignCombinationFromCurrentIndex();
+		currentNinjaSignIndex = (currentNinjaSignIndex + 1) % MAX_NINJA_SIGNS;
+
+		if (foundCombination != null) {
+			OnNinjaCombinationExecuted?.Invoke(foundCombination);
+			INinjaCombinationScript foundScriptToActivate = foundCombination.ScriptToActivate;
+			if (foundScriptToActivate != null) {
+				NinjaCombinationScriptData scriptData;
+				foundScriptToActivate.Activate(scriptData);
+			} else {
+				Debug.Log($"Combination activated '{foundCombination.DisplayName}', but no valid script was found to activate.");	
+			}
+			
+			ninjaSignArray = new NinjaSignDescriptor[MAX_NINJA_SIGNS];
+		}
+		
+		return foundCombination != null;
+	}
+
+	private NinjaSignCombination CheckForNinjaSignCombinationFromCurrentIndex() {
+		List<NinjaSignCombination> validatingCombinations = ninjaSignCombinations.ToList();
+		List<NinjaSignCombination> validCombinations = new List<NinjaSignCombination>();
+		for (int i = 0; i < MAX_NINJA_SIGNS; i++) {
+			int ninjaSignIndex = currentNinjaSignIndex - i;
+			if (ninjaSignIndex < 0) {
+				ninjaSignIndex += MAX_NINJA_SIGNS;
+			}
+			
+			NinjaSignDescriptor ninjaSign = ninjaSignArray[ninjaSignIndex];
+			if (ninjaSign == null) {
+				break;
+			}
+
+			List<NinjaSignCombination> combinationsToRemove = new List<NinjaSignCombination>();
+			foreach (NinjaSignCombination validatingCombination in validatingCombinations) {
+				if (i >= validatingCombination.NumberOfSignsToActivate) {
+					combinationsToRemove.Add(validatingCombination);
+					break;
+				}
+
+				int indexOfCombinationNinjaSignToValidate = validatingCombination.NumberOfSignsToActivate - i - 1;
+				if (validatingCombination.SignsToActivate[indexOfCombinationNinjaSignToValidate] == ninjaSign) {
+					if (i + 1 >= validatingCombination.NumberOfSignsToActivate) {
+						combinationsToRemove.Add(validatingCombination);
+						validCombinations.Add(validatingCombination);
+					}
+				}
+				else {
+					combinationsToRemove.Add(validatingCombination);
+				}
+			}
+
+			foreach (NinjaSignCombination combinationToRemove in combinationsToRemove) {
+				validatingCombinations.Remove(combinationToRemove);
+			}
+		}
+
+		if (validCombinations.Count == 0) {
+			return null;
+		}
+
+		return validCombinations[0];
 	}
 }

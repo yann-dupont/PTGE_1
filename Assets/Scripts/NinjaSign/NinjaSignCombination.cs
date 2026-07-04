@@ -13,9 +13,10 @@ public class NinjaSignCombination : ScriptableObject {
 	[SerializeReference, Tooltip("Must match exactly the name of the C# script to execute.")]
 	private string scriptType;
 	
-	public IEnumerable<NinjaSignDescriptor> SignsToActivate => signsToActivate;
+	public List<NinjaSignDescriptor> SignsToActivate => signsToActivate;
+	public int NumberOfSignsToActivate => signsToActivate.Count;
 	public string DisplayName => displayName;
-	public INinjaCombinationScript ScriptType {
+	public INinjaCombinationScript ScriptToActivate {
 		get {
 			Type scriptTypeValue = Type.GetType(scriptType);
 			if (scriptTypeValue == null) {
