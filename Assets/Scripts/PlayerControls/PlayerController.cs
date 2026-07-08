@@ -4,141 +4,155 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public partial class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
-    public float maxSpeed = 6f;
-    public float acceleration = 20f;
-    public float deceleration = 25f;
+	[Header("Movement")]
+	public float maxSpeed = 6f;
+	public float acceleration = 20f;
+	public float deceleration = 25f;
 
-    [Header("Dash")]
-    public float dashSpeed = 18f;
-    public float dashDuration = 0.15f;
-    public float dashCooldown = 1f;
+	[Header("Rotation")]
+	public float rotationSpeed = 12f;
 
-    private Rigidbody rb;
-    private InputSystem_Actions input;
+	[Header("Dash")]
+	public float dashSpeed = 18f;
+	public float dashDuration = 0.15f;
+	public float dashCooldown = 1f;
 
-    private Vector2 moveInput;
-    private Vector3 velocity;
+	private Rigidbody rb;
+	private InputSystem_Actions input;
 
-    private bool isDashing;
-    private float dashTime;
-    private float lastDashTime;
-    [Header("Camera")]
-    [SerializeField] private CameraController cameraController;
+	private Vector2 moveInput;
+	private Vector3 velocity;
 
-    [SerializeField] private Transform lookNorth;
-    [SerializeField] private Transform lookSouth;
-    [SerializeField] private Transform lookEast;
-    [SerializeField] private Transform lookWest;
-    private Transform lastCameraTarget;
+	private bool isDashing;
+	private float dashTime;
+	private float lastDashTime;
+	[Header("Camera")]
+	[SerializeField] private CameraController cameraController;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        input = new InputSystem_Actions();
-    }
+	[SerializeField] private Transform lookNorth;
+	[SerializeField] private Transform lookSouth;
+	[SerializeField] private Transform lookEast;
+	[SerializeField] private Transform lookWest;
+	private Transform lastCameraTarget;
 
-    private void OnEnable()
-    {
-        input.Enable();
-        OnEnable_NinjaSigns();
-    }
+	private void Awake()
+	{
+		rb = GetComponent<Rigidbody>();
+		input = new InputSystem_Actions();
+	}
 
-    private void OnDisable()
-    {
-        OnDisable_NinjaSigns();
-        input.Disable();
-    }
+	private void OnEnable()
+	{
+		input.Enable();
+		OnEnable_NinjaSigns();
+	}
 
-    private void Update()
-    {
-        moveInput = input.Player.Move.ReadValue<Vector2>();
-        HandleCameraInput();
-        if (input.Player.Sprint.WasPressedThisFrame())
-        {
-            TryDash();
-        }
-        
-        Update_NinjaSigns();
-    }
+	private void OnDisable()
+	{
+		OnDisable_NinjaSigns();
+		input.Disable();
+	}
 
-    private void FixedUpdate()
-    {
-        Vector3 targetDir = new Vector3(moveInput.x, 0, moveInput.y);
+	private void Update()
+	{
+		moveInput = input.Player.Move.ReadValue<Vector2>();
+		HandleCameraInput();
+		if (input.Player.Sprint.WasPressedThisFrame())
+		{
+			TryDash();
+		}
 
-        if (targetDir.magnitude > 1)
-            targetDir.Normalize();
+		Update_NinjaSigns();
+	}
 
-        if (!isDashing)
-        {
-            Vector3 targetVelocity = targetDir * maxSpeed;
+	private void FixedUpdate()
+	{
+		Vector3 targetDir = new Vector3(moveInput.x, 0, moveInput.y);
 
-            float accel = (targetDir.magnitude > 0.1f)
-                ? acceleration
-                : deceleration;
+		// Rotate player to face movement direction
+		if (targetDir.sqrMagnitude > 0.001f)
+		{
+			Quaternion targetRotation = Quaternion.LookRotation(targetDir);
+			transform.rotation = Quaternion.Slerp(
+				transform.rotation,
+				targetRotation,
+				rotationSpeed * Time.fixedDeltaTime
+			);
+		}
 
-            velocity = Vector3.MoveTowards(
-                velocity,
-                targetVelocity,
-                accel * Time.fixedDeltaTime
-            );
-        }
-        else
-        {
-            dashTime -= Time.fixedDeltaTime;
+		if (targetDir.magnitude > 1)
+			targetDir.Normalize();
 
-            if (dashTime <= 0)
-                isDashing = false;
-        }
+		if (!isDashing)
+		{
+			Vector3 targetVelocity = targetDir * maxSpeed;
 
-        rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
-    }
+			float accel = (targetDir.magnitude > 0.1f)
+				? acceleration
+				: deceleration;
 
-    private void TryDash()
-    {
-        if (Time.time < lastDashTime + dashCooldown)
-            return;
+			velocity = Vector3.MoveTowards(
+				velocity,
+				targetVelocity,
+				accel * Time.fixedDeltaTime
+			);
+		}
+		else
+		{
+			dashTime -= Time.fixedDeltaTime;
 
-        Vector3 dir = new Vector3(moveInput.x, 0, moveInput.y);
+			if (dashTime <= 0)
+				isDashing = false;
+		}
 
-        if (dir.sqrMagnitude < 0.01f)
-            dir = transform.forward;
+		rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+	}
 
-        dir.Normalize();
+	private void TryDash()
+	{
+		if (Time.time < lastDashTime + dashCooldown)
+			return;
 
-        velocity = dir * dashSpeed;
+		Vector3 dir = new Vector3(moveInput.x, 0, moveInput.y);
 
-        isDashing = true;
-        dashTime = dashDuration;
-        lastDashTime = Time.time;
-    }
+		if (dir.sqrMagnitude < 0.01f)
+			dir = transform.forward;
 
-    private void HandleCameraInput()
-    {
-        if (input.Player.LookNorth.IsPressed())
-        {
-            cameraController.SetCameraTarget(lookNorth);
-            return;
-        }
+		dir.Normalize();
 
-        if (input.Player.LookSouth.IsPressed())
-        {
-            cameraController.SetCameraTarget(lookSouth);
-            return;
-        }
+		velocity = dir * dashSpeed;
 
-        if (input.Player.LookEast.IsPressed())
-        {
-            cameraController.SetCameraTarget(lookEast);
-            return;
-        }
+		isDashing = true;
+		dashTime = dashDuration;
+		lastDashTime = Time.time;
+	}
 
-        if (input.Player.LookWest.IsPressed())
-        {
-            cameraController.SetCameraTarget(lookWest);
-            return;
-        }
+	private void HandleCameraInput()
+	{
+		if (input.Player.LookNorth.IsPressed())
+		{
+			cameraController.SetCameraTarget(lookNorth);
+			return;
+		}
 
-        cameraController.ResetToPlayer();
-    }
+		if (input.Player.LookSouth.IsPressed())
+		{
+			cameraController.SetCameraTarget(lookSouth);
+			return;
+		}
+
+		if (input.Player.LookEast.IsPressed())
+		{
+			cameraController.SetCameraTarget(lookEast);
+			return;
+		}
+
+		if (input.Player.LookWest.IsPressed())
+		{
+			cameraController.SetCameraTarget(lookWest);
+			return;
+		}
+
+		cameraController.ResetToPlayer();
+	}
 }
