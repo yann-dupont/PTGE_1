@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 4382386215461828098, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   displayName: Amour
   icon: {fileID: 21300000, guid: 06c0881b8776cca47a783ec59628ca28, type: 3}
+  animationTrigger: Amour_Trigger

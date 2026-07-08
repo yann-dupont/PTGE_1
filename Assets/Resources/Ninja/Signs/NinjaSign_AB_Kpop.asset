@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: -3217167149237019989, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   displayName: K-Pop
   icon: {fileID: 21300000, guid: 2108f1fe3e781ac44b20820eaee1f70f, type: 3}
+  animationTrigger: Kpop_Trigger

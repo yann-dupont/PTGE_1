@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 4382386215461828098, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   displayName: Chevreuil
   icon: {fileID: 21300000, guid: a278f8a59289a364496e4df8a62a2ef5, type: 3}
+  animationTrigger: Chevreuil_Trigger

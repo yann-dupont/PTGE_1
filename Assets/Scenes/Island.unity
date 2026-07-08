@@ -2529,6 +2529,7 @@ MonoBehaviour:
   maxSpeed: 10
   acceleration: 20
   deceleration: 25
+  rotationSpeed: 12
   dashSpeed: 18
   dashDuration: 0.15
   dashCooldown: 1
@@ -17110,14 +17111,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6980696766714717917, guid: dad312fa01416e142811170d7eea6082, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7038744812165562619, guid: dad312fa01416e142811170d7eea6082, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c7f465aea66a11c40bf8a4c2afead947, type: 2}
-    - target: {fileID: 7038744812165562619, guid: dad312fa01416e142811170d7eea6082, type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8480775500478178649, guid: dad312fa01416e142811170d7eea6082, type: 3}

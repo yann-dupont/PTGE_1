@@ -39,6 +39,7 @@ public partial class PlayerController : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		input = new InputSystem_Actions();
+		Awake_Animation();
 	}
 
 	private void OnEnable()
