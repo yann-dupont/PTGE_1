@@ -2175,7 +2175,6 @@ GameObject:
   m_Component:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   m_Layer: 0
@@ -2185,14 +2184,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -6487,6 +6478,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b92fa222180f360418f969edddd72c3a, type: 3}
   m_PrefabInstance: {fileID: 177096161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &921592825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7317335753444081843, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+  m_PrefabInstance: {fileID: 455013339293942025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &922200654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9796,6 +9792,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b92fa222180f360418f969edddd72c3a, type: 3}
   m_PrefabInstance: {fileID: 503829774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1389226617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4324961308526837819, guid: dad312fa01416e142811170d7eea6082, type: 3}
+  m_PrefabInstance: {fileID: 1310796500658905055}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1389252827 stripped
 Transform:
@@ -14989,6 +14990,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3985274219414772353, guid: dad312fa01416e142811170d7eea6082, type: 3}
   m_PrefabInstance: {fileID: 1310796500658905055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2043121913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389226617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4b668b9ade20a45add1640e78b2762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NinjaChakraManager
+  chakraBar: {fileID: 455013339293942026}
+  maxChakraAmount: 100
+  chakraGainRate: 1
+--- !u!114 &2043121914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389226617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 359508c79e3c5614aa2d386b7a8810b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  stockContainer: {fileID: 921592825}
+  heartPrefab: {fileID: 1000010820938182, guid: 7c8e8b5b1558faf4197338ae74bf3275, type: 3}
+  maxHealth: 5
 --- !u!1001 &2043861610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15691,6 +15722,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+--- !u!114 &455013339293942026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4692941072961705321, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+  m_PrefabInstance: {fileID: 455013339293942025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &839475574554442664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15831,7 +15873,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4324961308526837819, guid: dad312fa01416e142811170d7eea6082, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2043121914}
+    - targetCorrespondingSourceObject: {fileID: 4324961308526837819, guid: dad312fa01416e142811170d7eea6082, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2043121913}
   m_SourcePrefab: {fileID: 100100000, guid: dad312fa01416e142811170d7eea6082, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

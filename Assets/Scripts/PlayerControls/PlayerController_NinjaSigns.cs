@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(NinjaChakraManager))]
 public partial class PlayerController
 {
 	private const float ACTION_BUFFER_TIMER = 0.25f;
@@ -12,12 +13,15 @@ public partial class PlayerController
 
 	private List<InputAction> actionBuffer = new List<InputAction>();
 	private float actionBufferTime = 0f;
-
+	
+	private NinjaChakraManager chakraManager;
 	private void OnEnable_NinjaSigns()
 	{
+		chakraManager = GetComponent<NinjaChakraManager>();
 		BindToNinjaSigns();
 	}
-
+	
+	
 	private void OnDisable_NinjaSigns()
 	{
 		UnbindFromNinjaSigns();
@@ -76,7 +80,6 @@ public partial class PlayerController
 	private void OnNinjaActionPerformed(InputAction.CallbackContext context)
 	{
 		InputAction performedAction = context.action;
-
 		actionBuffer.Add(performedAction);
 	}
 
@@ -91,7 +94,8 @@ public partial class PlayerController
 
 		if (executedSign == null)
 			return;
-
+	
+		chakraManager.ConsumeChakra(executedSign);
 		PlayNinjaSignAnimation(executedSign);
 
 		NinjaSignVessel.Instance(gameObject.scene)
@@ -111,7 +115,7 @@ public partial class PlayerController
 			foreach (InputActionReference ninjaSignActionReference in ninjaSign.Actions)
 			{
 				InputAction ninjaSignAction = ninjaSignActionReference.action;
-				if (!actionBuffer.Contains(ninjaSignAction))
+				if (!actionBuffer.Contains(ninjaSignAction) || !HasEnoughChakra(ninjaSign))
 				{
 					canExecute = false;
 					break;
@@ -125,5 +129,9 @@ public partial class PlayerController
 		}
 
 		return null;
+	}
+	private bool HasEnoughChakra(NinjaSignDescriptor ninjaSign)
+	{
+		return chakraManager.CurrentChakraAmount >= ninjaSign.chakraCost;
 	}
 }

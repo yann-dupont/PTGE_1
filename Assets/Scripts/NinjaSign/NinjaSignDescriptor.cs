@@ -21,4 +21,5 @@ public class NinjaSignDescriptor : ScriptableObject {
 	public string DisplayName => displayName;
 	public Sprite Icon => icon;
 	public string AnimationTrigger => animationTrigger;
+	public int chakraCost = 10;
 }
