@@ -20,7 +20,7 @@ public class FlashScreen : MonoBehaviour {
 
 	private Coroutine displayCoroutine = null;
 	
-	public static bool HasIsntance(Scene forScene) {
+	public static bool HasInstance(Scene forScene) {
 		return instances.ContainsKey(forScene);
 	}
 
@@ -29,7 +29,7 @@ public class FlashScreen : MonoBehaviour {
 	}
 	
 	private void Awake() {
-		if (HasIsntance(gameObject.scene)) {
+		if (HasInstance(gameObject.scene)) {
 			Debug.Log("Ok buddy.");
 			DestroyImmediate(gameObject);
 		} else {
@@ -38,7 +38,7 @@ public class FlashScreen : MonoBehaviour {
 	}
 
 	private void OnDestroy() {
-		if (HasIsntance(gameObject.scene) && Instance(gameObject.scene) == this) {
+		if (HasInstance(gameObject.scene) && Instance(gameObject.scene) == this) {
 			instances.Remove(gameObject.scene);
 		}
 	}

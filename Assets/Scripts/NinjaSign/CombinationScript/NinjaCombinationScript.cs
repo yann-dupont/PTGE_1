@@ -2,6 +2,7 @@
 
 public struct NinjaCombinationScriptData {
 	public Scene Scene;
+	public NinjaSignCombination combinationData;
 }
 
 public interface INinjaCombinationScript {

@@ -69,7 +69,7 @@ public class NinjaSignVessel : MonoBehaviour {
 			OnNinjaCombinationExecuted?.Invoke(foundCombination);
 			INinjaCombinationScript foundScriptToActivate = foundCombination.ScriptToActivate;
 			if (foundScriptToActivate != null) {
-				foundScriptToActivate.Activate(CreateScriptData());
+				foundScriptToActivate.Activate(CreateScriptData(foundCombination));
 			} else {
 				Debug.Log($"Combination activated '{foundCombination.DisplayName}', but no valid script was found to activate.");	
 			}
@@ -80,10 +80,10 @@ public class NinjaSignVessel : MonoBehaviour {
 		return foundCombination != null;
 	}
 
-	private NinjaCombinationScriptData CreateScriptData() {
+	private NinjaCombinationScriptData CreateScriptData(NinjaSignCombination foundCombination) {
 		NinjaCombinationScriptData scriptData;
 		scriptData.Scene = gameObject.scene;
-		
+		scriptData.combinationData = foundCombination;
 		return scriptData;
 	}
 
