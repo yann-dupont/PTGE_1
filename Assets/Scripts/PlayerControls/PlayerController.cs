@@ -156,4 +156,20 @@ public partial class PlayerController : MonoBehaviour
 
 		cameraController.ResetToPlayer();
 	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Collectable"))
+			Debug.Log($"Hit an collectable: {collision.gameObject.name}");
+	}
+
+	private void OnCollisionStay(Collision collision)
+	{
+		
+	}
+
+	private void OnCollisionExit(Collision collision)
+	{
+		
+	}
 }
