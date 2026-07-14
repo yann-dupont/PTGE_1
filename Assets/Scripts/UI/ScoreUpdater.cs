@@ -6,23 +6,16 @@ public class ScoreUpdater : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText; // Drag your TMP object here
     private int score = 0;
-    private float tickRate = 0.1f; // Tenth of a second
 
-    void Start()
-    {
-        if (scoreText != null)
-        {
-            StartCoroutine(TickScore());
-        }
+    void Start() {
+        if (scoreText)
+            scoreText.text += " " + score;
     }
 
-    IEnumerator TickScore()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(tickRate);
-            score++;
-            scoreText.text = "Score: " + score.ToString();
-        }
+    public void incrementScore(int score) {
+        this.score += score;
+        if (scoreText)
+            scoreText.text += " " + score;
     }
+
 }
