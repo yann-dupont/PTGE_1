@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a09c1785462a904889cccfc304cac83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
-  acceleration: 3
-  duration: 6
-  _fireballTrails: {fileID: 3868159589961509580}
+  visualEffect: {fileID: 3868159589961509580}
+  duration: 5
+  soundEffect: {fileID: 8300000, guid: 55954e75700ca5b439f12f712b373528, type: 3}
+  _maxMoveSpeed: 200
+  acceleration: 50
 --- !u!135 &3897282657788561427
 SphereCollider:
   m_ObjectHideFlags: 0

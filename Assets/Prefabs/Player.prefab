@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 790459812384738998}
-  - component: {fileID: 602039043010313093}
   m_Layer: 0
-  m_Name: SpellManager
+  m_Name: SpellSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,18 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6980696766714717917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &602039043010313093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5766818889384484736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc86a33b82933e4ba6056bd9aeea85a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpellManager
 --- !u!1 &8480775500478178649
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,6 +46,7 @@ GameObject:
   - component: {fileID: 6845716810677475771}
   - component: {fileID: 134937912155254511}
   - component: {fileID: 2999202002397355741}
+  - component: {fileID: 9143958465375962129}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -217,6 +205,19 @@ MonoBehaviour:
   stockContainer: {fileID: 0}
   heartPrefab: {fileID: 1000010820938182, guid: 7c8e8b5b1558faf4197338ae74bf3275, type: 3}
   maxHealth: 5
+--- !u!114 &9143958465375962129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480775500478178649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc86a33b82933e4ba6056bd9aeea85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpellManager
+  spellSpawnPoint: {fileID: 790459812384738998}
 --- !u!1001 &3513987162565524842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9750c67196c9ba942ab71e099a3b3c62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.389
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9750c67196c9ba942ab71e099a3b3c62, type: 3}
       propertyPath: m_LocalPosition.z

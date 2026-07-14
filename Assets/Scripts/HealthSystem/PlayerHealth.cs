@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = 1;
         for (int i = 0; i < maxHealth; i++)
         {
             healthPoints.Add(Instantiate(heartPrefab, stockContainer.transform).GetComponent<Heart>());
@@ -33,8 +33,8 @@ public class PlayerHealth : MonoBehaviour
         }
         UpdateHealthUI();
     }
-    
-    void Healed(int healAmount)
+
+    public void Healed(int healAmount)
     {
         currentHealth += healAmount;
         if (currentHealth >= maxHealth)
