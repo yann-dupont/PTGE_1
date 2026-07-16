@@ -157,19 +157,38 @@ public partial class PlayerController : MonoBehaviour
 		cameraController.ResetToPlayer();
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	private void OnCollisionEnter(Collision collision) 
 	{
-		if (collision.gameObject.CompareTag("Collectable"))
-			Debug.Log($"Hit an collectable: {collision.gameObject.name}");
+		HandleCollectableCollisionEnter(collision);
 	}
 
-	private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay(Collision collision) 
 	{
-		
+		HandleCollectableCollisionStay(collision);
 	}
 
-	private void OnCollisionExit(Collision collision)
+	private void OnCollisionExit(Collision collision) 
 	{
-		
+		HandleCollectableCollisionExit(collision);
+	}
+
+	private void EnablePlayerMovement() 
+	{
+        input.Player.Move.Enable();
+		input.Player.Sprint.Enable();
+        input.Player.LookNorth.Enable();
+        input.Player.LookNorth.Enable();
+        input.Player.LookNorth.Enable();
+        input.Player.LookNorth.Enable();
+	}
+
+	private void DisablePlayerMovement()
+	{
+        input.Player.Move.Disable();
+		input.Player.Sprint.Disable();
+        input.Player.LookNorth.Disable();
+        input.Player.LookNorth.Disable();
+        input.Player.LookNorth.Disable();
+        input.Player.LookNorth.Disable();
 	}
 }

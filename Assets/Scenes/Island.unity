@@ -835,7 +835,7 @@ Transform:
   m_GameObject: {fileID: 128434731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.53}
+  m_LocalPosition: {x: -0, y: 0.1, z: 7.53}
   m_LocalScale: {x: 9.37, y: 1, z: 5.26}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2810,8 +2810,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 365, y: 147}
-  m_SizeDelta: {x: 468.5203, y: 31.2423}
+  m_AnchoredPosition: {x: 381.8495, y: 147}
+  m_SizeDelta: {x: 502.2193, y: 31.2423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &408151439
 MeshRenderer:
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold X/Right-click: Collect Recources'
+  m_text: 'Hold D-Pad X/Right-click: Collect Recources'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6959,8 +6959,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1335751962}
     m_Modifications:
     - target: {fileID: 201620436069759154, guid: c8a2815ff94c8cf4c817008d9af097ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 201620436069759154, guid: c8a2815ff94c8cf4c817008d9af097ad, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559844359691677926, guid: c8a2815ff94c8cf4c817008d9af097ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3559844359691677926, guid: c8a2815ff94c8cf4c817008d9af097ad, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9290,6 +9298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
   collectionDuration: 5
+  highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  emissionIntensity: 1.5
 --- !u!4 &1311060974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1948089903558696190, guid: a79f26c2c26a872468e9cc5925298ae7, type: 3}
