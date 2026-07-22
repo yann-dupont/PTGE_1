@@ -172,7 +172,15 @@ public partial class PlayerController : MonoBehaviour
 		HandleCollectableCollisionExit(collision);
 	}
 
-	private void EnablePlayerMovement() 
+    private void OnTriggerEnter(Collider other)
+    {
+		if (other.gameObject.CompareTag("Tent"))
+		{
+			HandleCollectableTentDrop();
+        }
+    }
+
+    private void EnablePlayerMovement() 
 	{
         input.Player.Move.Enable();
 		input.Player.Sprint.Enable();

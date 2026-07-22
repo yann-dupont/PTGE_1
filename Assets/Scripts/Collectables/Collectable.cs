@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
@@ -7,6 +8,7 @@ public class Collectable : MonoBehaviour
     [SerializeField] float emissionIntensity = 1.2f;
 
     private Material instanceMaterial;
+    private Vector3 initialScale;
 
     void Start()
     {
@@ -19,8 +21,11 @@ public class Collectable : MonoBehaviour
         renderer.material = instanceMaterial;
 
         DisableHighlight();
+
+        initialScale = transform.localScale;
+
     }
-    
+
     public float  GetCollectionDuration()
     {
         return collectionDuration;
@@ -35,5 +40,13 @@ public class Collectable : MonoBehaviour
     {
         instanceMaterial.DisableKeyword("_EMISSION");   
     }
-    
+
+    public void CollectEffect(float currentCollectingTime)
+    {
+        float progress = Mathf.Clamp01(currentCollectingTime / collectionDuration);
+
+        float currentIntensity = Mathf.Lerp(emissionIntensity, 0f, progress);
+
+        instanceMaterial.SetColor("_EmissionColor", highlightColor * currentIntensity);
+    }
 }
