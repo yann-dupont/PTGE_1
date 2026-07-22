@@ -6,7 +6,7 @@ public partial class PlayerController
 
     private void Awake_Animation()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void PlayNinjaSignAnimation(NinjaSignDescriptor sign)
