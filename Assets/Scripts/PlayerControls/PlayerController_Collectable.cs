@@ -81,6 +81,7 @@ public partial class PlayerController
         {
             scoreUpdater.IncrementScore(collected);
             scoreUpdater.SetPreScore(0);
+            tutoManager.RegisterMoneyConverted();
         }
         collected = 0;
     }

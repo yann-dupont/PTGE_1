@@ -21,7 +21,9 @@ public class NinjaSignVessel : MonoBehaviour {
 	private NinjaSignDescriptor[] ninjaSignArray = new NinjaSignDescriptor[MAX_NINJA_SIGNS];
 	private int currentNinjaSignIndex = 0;
 
-	public static bool HasIsntance(Scene forScene) {
+    private TutoManager tutoManager;
+
+    public static bool HasIsntance(Scene forScene) {
 		return instances.ContainsKey(forScene);
 	}
 
@@ -39,7 +41,8 @@ public class NinjaSignVessel : MonoBehaviour {
 		} else {
 			LoadAllResources();
 			instances.Add(gameObject.scene, this);
-		}
+            tutoManager = FindAnyObjectByType<TutoManager>();
+        }
 	}
 
 	private void OnDestroy() {
@@ -70,7 +73,8 @@ public class NinjaSignVessel : MonoBehaviour {
 			INinjaCombinationScript foundScriptToActivate = foundCombination.ScriptToActivate;
 			if (foundScriptToActivate != null) {
 				foundScriptToActivate.Activate(CreateScriptData(foundCombination));
-			} else {
+                tutoManager.RegisterComboUsed();
+            } else {
 				Debug.Log($"Combination activated '{foundCombination.DisplayName}', but no valid script was found to activate.");	
 			}
 			

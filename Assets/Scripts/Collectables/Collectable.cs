@@ -14,6 +14,7 @@ public class Collectable : MonoBehaviour
 
     private Material instanceMaterial;
     private Vector3 initialScale;
+    private TutoManager tutoManager;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class Collectable : MonoBehaviour
         initialScale = transform.localScale;
 
         soundManager = FindAnyObjectByType<SoundManager>();
+        tutoManager = FindAnyObjectByType<TutoManager>();
     }
 
     public float  GetCollectionDuration()
@@ -57,6 +59,7 @@ public class Collectable : MonoBehaviour
     }
 
     public void CollectedEffect() {
+        tutoManager.RegisterResourceCollected();
         soundManager.PlaySound(collectSoundSource, collectClips, createTempSource:true);
     }
 }

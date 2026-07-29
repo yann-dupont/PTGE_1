@@ -29,7 +29,7 @@ public class Shop : MonoBehaviour {
 
         currentAvailableUpgrades = new GameObject[upgradeSlots.Length];
 
-        StartCoroutine(TestSpawnUpgrade());
+        //StartCoroutine(TestSpawnUpgrade());
     }
 
     IEnumerator TestSpawnUpgrade() {

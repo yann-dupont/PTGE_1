@@ -47,13 +47,15 @@ public partial class PlayerController : MonoBehaviour
     SoundManager soundManager;
 
 	[HideInInspector] public Upgrade currentUpgrade;
+    private TutoManager tutoManager;
 
-	private void Awake()
+    private void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 		input = new InputSystem_Actions();
 		Awake_Animation();
 		soundManager = FindAnyObjectByType<SoundManager>();
+        tutoManager = FindAnyObjectByType<TutoManager>();
     }
 
 	private void OnEnable()
