@@ -62,9 +62,9 @@ public class Shop : MonoBehaviour {
             }
             newUpgrade.SetActive(true);
             newUpgrade.transform.position = upgradeSlots[i].position;
-            newUpgrade.transform.rotation = upgradeSlots[i].rotation;
 
             Upgrade upgrade = newUpgrade.GetComponent<Upgrade>();
+            upgrade.descriptionText.gameObject.transform.parent.rotation = upgradeSlots[i].rotation;
             upgrade.upgradeInfo.count -= 1;
             upgrade.isCollectible = true;
             currentAvailableUpgrades[i] = newUpgrade;

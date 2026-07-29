@@ -5,8 +5,8 @@ using UnityEngine;
 public class Upgrade : MonoBehaviour {
 
     [SerializeField] public UpgradeInfo upgradeInfo;
-    [SerializeField] TextMeshProUGUI descriptionText;
-    [SerializeField] GameObject confirmButton;
+    [SerializeField] public TextMeshProUGUI descriptionText;
+    [SerializeField] public GameObject confirmButton;
     [HideInInspector] public bool isCollectible;
 
     void Start() {
