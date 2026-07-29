@@ -34,7 +34,7 @@ public partial class PlayerController
             EnablePlayerMovement();
         }
 
-        currentCollectable?.CollectEffect(currentCollectingTime);
+        currentCollectable?.CollectingEffect(currentCollectingTime);
         
     }
 
@@ -53,6 +53,7 @@ public partial class PlayerController
             if (scoreUpdater)
                 scoreUpdater.SetPreScore(collected);
 
+            currentCollectable.CollectedEffect();
             currentCollectable.gameObject.SetActive(false);
             currentCollectable = null;
             currentCollectingTime = 0f;

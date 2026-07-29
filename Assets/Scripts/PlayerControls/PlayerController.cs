@@ -42,12 +42,18 @@ public partial class PlayerController : MonoBehaviour
 	[SerializeField] private Transform lookWest;
 	private Transform lastCameraTarget;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource dashSoundSource;
+	[SerializeField] private AudioClip[] dashClips;
+    SoundManager soundManager;
+
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
 		input = new InputSystem_Actions();
 		Awake_Animation();
-	}
+		soundManager = FindAnyObjectByType<SoundManager>();
+    }
 
 	private void OnEnable()
 	{
@@ -138,6 +144,8 @@ public partial class PlayerController : MonoBehaviour
 		isDashing = true;
 		dashTime = dashDuration;
 		lastDashTime = Time.time;
+
+		soundManager.PlaySound(dashSoundSource, dashClips);
 	}
 
 	private void HandleCameraInput()
