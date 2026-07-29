@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,10 +24,16 @@ public partial class PlayerController : MonoBehaviour
 	private Vector2 moveInput;
 	private Vector3 velocity;
 
-	private bool isDashing;
+    private Vector3 moveDir;
+    private Vector3 lookDir;
+
+	private bool IsLookingCardinal;
+
+    private bool isDashing;
 	private float dashTime;
 	private float lastDashTime;
-	[Header("Camera")]
+
+    [Header("Camera")]
 	[SerializeField] private CameraController cameraController;
 
 	[SerializeField] private Transform lookNorth;
@@ -68,27 +75,32 @@ public partial class PlayerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Vector3 targetDir = new Vector3(moveInput.x, 0, moveInput.y);
+        moveDir = new Vector3(moveInput.x, 0, moveInput.y);
 
-		// Rotate player to face movement direction
-		if (targetDir.sqrMagnitude > 0.001f)
+		if (!IsLookingCardinal)
 		{
-			Quaternion targetRotation = Quaternion.LookRotation(targetDir);
-			transform.rotation = Quaternion.Slerp(
-				transform.rotation,
-				targetRotation,
-				rotationSpeed * Time.fixedDeltaTime
-			);
-		}
+            lookDir = moveDir;
+        }
 
-		if (targetDir.magnitude > 1)
-			targetDir.Normalize();
+        // Rotate player to face movement direction
+        if (lookDir.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(lookDir);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.fixedDeltaTime
+            );
+        }
+
+        if (moveDir.magnitude > 1)
+            moveDir.Normalize();
 
 		if (!isDashing)
 		{
-			Vector3 targetVelocity = targetDir * maxSpeed;
+			Vector3 targetVelocity = moveDir * maxSpeed;
 
-			float accel = (targetDir.magnitude > 0.1f)
+			float accel = (moveDir.magnitude > 0.1f)
 				? acceleration
 				: deceleration;
 
@@ -130,34 +142,44 @@ public partial class PlayerController : MonoBehaviour
 
 	private void HandleCameraInput()
 	{
-		if (input.Player.LookNorth.IsPressed())
+        if (input.Player.LookNorth.IsPressed())
+        {
+			PlayerLookCardinal(lookNorth);
+        }
+		else if (input.Player.LookSouth.IsPressed())
 		{
-			cameraController.SetCameraTarget(lookNorth);
-			return;
-		}
+            PlayerLookCardinal(lookSouth);
 
-		if (input.Player.LookSouth.IsPressed())
+        }
+        else if (input.Player.LookEast.IsPressed())
 		{
-			cameraController.SetCameraTarget(lookSouth);
-			return;
-		}
+            PlayerLookCardinal(lookEast);
 
-		if (input.Player.LookEast.IsPressed())
+        }
+        else if (input.Player.LookWest.IsPressed())
+        {
+            PlayerLookCardinal(lookWest);
+        }
+        else
 		{
-			cameraController.SetCameraTarget(lookEast);
-			return;
-		}
+            cameraController.ResetToPlayer();
+            IsLookingCardinal = false;
+            input.Player.Move.Enable();
+            input.Player.Sprint.Enable();
+        }
+    }
 
-		if (input.Player.LookWest.IsPressed())
-		{
-			cameraController.SetCameraTarget(lookWest);
-			return;
-		}
+    private void PlayerLookCardinal(Transform look)
+    {
+        cameraController.SetCameraTarget(look);
+        lookDir = look.forward;
 
-		cameraController.ResetToPlayer();
-	}
+        IsLookingCardinal = true;
+        input.Player.Move.Disable();
+        input.Player.Sprint.Disable();
+    }
 
-	private void OnCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision) 
 	{
 		HandleCollectableCollisionEnter(collision);
 	}

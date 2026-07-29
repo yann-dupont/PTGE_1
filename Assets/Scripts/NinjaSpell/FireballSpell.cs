@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -23,11 +24,16 @@ public class FireballSpell : Spell
         _fireball  = GetComponent<Rigidbody>();
     }
 
-    public void Init(float startingVelocity, Vector3 direction)
+    public void Init(float startingVelocity, Vector3 direction, bool withPerfectDirection)
     {
         timer = 0f;
         currentVelocity = startingVelocity;
         this.direction = direction;
+
+        if (withPerfectDirection)
+        {
+            // better fireball properties ??
+        }
     }
     
     protected override void HandleSpell()
@@ -89,4 +95,5 @@ public class FireballSpell : Spell
                 
         }
     }
+
 }

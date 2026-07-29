@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerSpellManager : MonoBehaviour
@@ -18,7 +19,7 @@ public class PlayerSpellManager : MonoBehaviour
     }
     
 
-    public void CastSpell(GameObject spellPrefab)
+    public void CastSpell(GameObject spellPrefab, bool withPerfectDirection = false)
     {
         if (Instance == null)
         {
@@ -27,17 +28,19 @@ public class PlayerSpellManager : MonoBehaviour
         }
         Spell spellToBeCasted = spellPrefab.GetComponent<Spell>();
         audioSource.PlayOneShot(spellToBeCasted.soundEffect);
-        switch(spellToBeCasted)
+
+        switch (spellToBeCasted)
         {
             case FireballSpell:
                 FireballSpell fireballSpell = Instantiate(spellPrefab, spellSpawnPoint.position, spellSpawnPoint.rotation).GetComponent<FireballSpell>();
-                fireballSpell.Init(GetComponent<Rigidbody>().linearVelocity.magnitude, spellSpawnPoint.forward );
+                fireballSpell.Init(GetComponent<Rigidbody>().linearVelocity.magnitude, spellSpawnPoint.forward, withPerfectDirection);
                 break;
             
             case HealSpell:
                 HealSpell healSpell = Instantiate(spellPrefab, transform.position, spellSpawnPoint.rotation,transform).GetComponent<HealSpell>();
-                healSpell.Init(gameObject.GetComponent<PlayerHealth>());
+                healSpell.Init(gameObject.GetComponent<PlayerHealth>(), withPerfectDirection);
                 break;
         }
     }
+
 }

@@ -4,14 +4,23 @@ using UnityEngine;
 public class HealSpell : Spell
 {
     [SerializeField] private int healAmount;
+    [SerializeField] private int healAmountBetter;
     private PlayerHealth playerHealth;
     private float timer;
     
-    public void Init(PlayerHealth playerHealth)
+    public void Init(PlayerHealth playerHealth, bool withPerfectDirection)
     {
         timer = 0f;
         this.playerHealth = playerHealth;
-        playerHealth.Healed(healAmount);
+        if (withPerfectDirection)
+        {
+            playerHealth.Healed(healAmountBetter);
+        }
+        else
+        {
+            playerHealth.Healed(healAmount);
+        }
+
     }
     
     protected override void Awake()
@@ -33,5 +42,5 @@ public class HealSpell : Spell
     {
         base.Update();
     }
-    
+
 }

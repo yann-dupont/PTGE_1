@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "Ninja Sign Combination", menuName = "Ninja/Ninja Sign Combination")]
 public class NinjaSignCombination : ScriptableObject {
@@ -19,7 +20,11 @@ public class NinjaSignCombination : ScriptableObject {
 	[SerializeField] private GameObject spellPrefab; 
 	
 	public List<NinjaSignDescriptor> SignsToActivate => signsToActivate;
-	public int NumberOfSignsToActivate => signsToActivate.Count;
+
+	[Tooltip("Stay empty if no action to hold to activate")]
+	public InputActionReference InputActionToHold;
+
+    public int NumberOfSignsToActivate => signsToActivate.Count;
 	public string DisplayName => displayName;
 	public bool IsASpell => isASpell;
 	public GameObject SpellPrefab => spellPrefab;

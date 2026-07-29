@@ -49,6 +49,7 @@ MonoBehaviour:
   duration: 3
   soundEffect: {fileID: 8300000, guid: c2df57e2c96ccf54d8e16c7d7584c276, type: 3}
   healAmount: 1
+  healAmountBetter: 2
 --- !u!1001 &5221322404417398745
 PrefabInstance:
   m_ObjectHideFlags: 0
