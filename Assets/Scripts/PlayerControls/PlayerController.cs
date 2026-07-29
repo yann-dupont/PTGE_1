@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +6,7 @@ public partial class PlayerController : MonoBehaviour
 {
 	[Header("Movement")]
 	public float maxSpeed = 6f;
-	public float acceleration = 20f;
+    public float acceleration = 20f;
 	public float deceleration = 25f;
 
 	[Header("Rotation")]
@@ -46,6 +45,8 @@ public partial class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource dashSoundSource;
 	[SerializeField] private AudioClip[] dashClips;
     SoundManager soundManager;
+
+	[HideInInspector] public Upgrade currentUpgrade;
 
 	private void Awake()
 	{
@@ -102,30 +103,33 @@ public partial class PlayerController : MonoBehaviour
         if (moveDir.magnitude > 1)
             moveDir.Normalize();
 
-		if (!isDashing)
-		{
-			Vector3 targetVelocity = moveDir * maxSpeed;
+		float currentMaxSpeed = maxSpeed;
+        velocity = moveDir * maxSpeed;
 
-			float accel = (moveDir.magnitude > 0.1f)
-				? acceleration
-				: deceleration;
-
-			velocity = Vector3.MoveTowards(
-				velocity,
-				targetVelocity,
-				accel * Time.fixedDeltaTime
-			);
-		}
-		else
-		{
-			dashTime -= Time.fixedDeltaTime;
-
-			if (dashTime <= 0)
+        if (isDashing) {
+            currentMaxSpeed = dashSpeed;
+            if (moveDir.magnitude < 0.1) {
+                velocity = transform.forward * dashSpeed;
+            } else {
+				velocity = moveDir * dashSpeed;
+			}
+            dashTime -= Time.fixedDeltaTime;
+			if (dashTime <= 0) {
 				isDashing = false;
+			}
 		}
 
-		rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
-	}
+        rb.linearVelocity = rb.linearVelocity + velocity;
+		if (rb.linearVelocity.magnitude > currentMaxSpeed) {
+			//rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
+			rb.linearVelocity = Vector3.Lerp(rb.linearVelocity.normalized * currentMaxSpeed, rb.linearVelocity, 0.2f * Time.fixedDeltaTime);
+		}
+
+        if (currentUpgrade && currentUpgrade.isCollectible && input.Player.Interact.IsPressed()) {
+            currentUpgrade.Collect();
+			currentUpgrade = null;
+        }
+    }
 
 	private void TryDash()
 	{
