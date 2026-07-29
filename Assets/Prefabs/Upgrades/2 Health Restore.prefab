@@ -13,6 +13,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.price
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.weight
       value: 5
       objectReference: {fileID: 0}

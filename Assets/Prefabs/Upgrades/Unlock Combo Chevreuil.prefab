@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8045046794575350783
+--- !u!1001 &4135251328676639018
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,6 +10,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.price
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
@@ -18,11 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.description
-      value: Upgrade 4
+      value: Unlock combo Triple-Chevreuil
       objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.comboUnlocked
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6792b0f42c4b444be4d54ac55f9fa7, type: 2}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_Name
-      value: Upgrade (4) Variant
+      value: Unlock Combo Chevreuil
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_IsActive

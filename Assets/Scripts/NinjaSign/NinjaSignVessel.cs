@@ -16,7 +16,7 @@ public class NinjaSignVessel : MonoBehaviour {
 	private static Dictionary<Scene, NinjaSignVessel> instances = new Dictionary<Scene, NinjaSignVessel>();
 	
 	private NinjaSignDescriptor[] ninjaSigns = Array.Empty<NinjaSignDescriptor>();
-	private NinjaSignCombination[] ninjaSignCombinations = Array.Empty<NinjaSignCombination>();
+	[SerializeField] private List<NinjaSignCombination> ninjaSignCombinations;
 	
 	private NinjaSignDescriptor[] ninjaSignArray = new NinjaSignDescriptor[MAX_NINJA_SIGNS];
 	private int currentNinjaSignIndex = 0;
@@ -53,7 +53,7 @@ public class NinjaSignVessel : MonoBehaviour {
 
 	private void LoadAllResources() {
 		ninjaSigns = Resources.LoadAll<NinjaSignDescriptor>(NINJA_SIGNS_RESOURCE_PATH);
-		ninjaSignCombinations = Resources.LoadAll<NinjaSignCombination>(NINJA_COMBINATIONS_RESOURCE_PATH);
+		//ninjaSignCombinations = Resources.LoadAll<NinjaSignCombination>(NINJA_COMBINATIONS_RESOURCE_PATH);
 	}
 
 	public bool AddNinjaSign(NinjaSignDescriptor ninjaSign) {
@@ -84,7 +84,12 @@ public class NinjaSignVessel : MonoBehaviour {
 		return foundCombination != null;
 	}
 
-	private NinjaCombinationScriptData CreateScriptData(NinjaSignCombination foundCombination) {
+	public void AddNinjaSignCombination(NinjaSignCombination ninjaSignCombination) {
+		this.ninjaSignCombinations.Add(ninjaSignCombination);
+	}
+
+
+    private NinjaCombinationScriptData CreateScriptData(NinjaSignCombination foundCombination) {
 		NinjaCombinationScriptData scriptData;
 		scriptData.Scene = gameObject.scene;
 		scriptData.combinationData = foundCombination;

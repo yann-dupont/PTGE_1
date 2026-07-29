@@ -8,6 +8,7 @@ public class ScoreUpdater : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText; 
     [SerializeField] private TextMeshProUGUI preScoreText; 
     private float score = 0;
+    public float Score => score;
 
     void Start() {
         UpdateScoreDisplay();
