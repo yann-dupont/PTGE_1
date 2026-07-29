@@ -8221,7 +8221,7 @@ MonoBehaviour:
   m_text: 'Convert resources
 
 
-    to score here'
+    to money here'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8631,6 +8631,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89cffeade6d8ee499a0b16e9286d46e, type: 3}
+--- !u!95 &1116818838 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 955717841887824641, guid: f8b62f332c9589e4e847b449066a2967, type: 3}
+  m_PrefabInstance: {fileID: 93138805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1116818839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 955717841895351523, guid: f8b62f332c9589e4e847b449066a2967, type: 3}
@@ -16237,6 +16242,7 @@ MonoBehaviour:
   - {fileID: 1422708794}
   - {fileID: 1325771134}
   - {fileID: 1795455959}
+  shopAnimator: {fileID: 1116818838}
 --- !u!1001 &1990170309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17337,6 +17343,10 @@ PrefabInstance:
     - target: {fileID: 1228074055390801802, guid: 724b17f9e0b699144898d2149e140900, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347645401935064077, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+      propertyPath: m_text
+      value: Money
       objectReference: {fileID: 0}
     - target: {fileID: 3013760254696649738, guid: 724b17f9e0b699144898d2149e140900, type: 3}
       propertyPath: m_AnchorMax.y

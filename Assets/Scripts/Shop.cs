@@ -7,6 +7,7 @@ public class Shop : MonoBehaviour {
 
     [SerializeField] GameObject[] upgradePrefabs;
     [SerializeField] Transform[] upgradeSlots;
+    [SerializeField] Animator shopAnimator;
 
     List<GameObject> upgradePool;
     Upgrade[] upgradePoolInfo;
@@ -45,12 +46,14 @@ public class Shop : MonoBehaviour {
             if(upgradeGO == null) {
                 continue;
             }
-            upgradeGO.SetActive(false);
             Upgrade upgrade = upgradeGO.GetComponent<Upgrade>();
+            upgrade.confirmButton.SetActive(false);
             upgrade.upgradeInfo.count += 1;
+            upgradeGO.SetActive(false);
             yield return new WaitForSeconds(0.3f);
         }
 
+        shopAnimator.Play("Spawn upgrades");
         currentAvailableUpgrades = new GameObject[upgradeSlots.Length];
 
         for (int i = 0; i < upgradeSlots.Length; i++) {

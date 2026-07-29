@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4414212868537934294
+--- !u!1001 &8877954805953780086
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,19 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.count
-      value: 3
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.weight
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.description
-      value: Upgrade 1
+      value: Restore all Chakra
+      objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.chakraGained
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_Name
-      value: Upgrade (1) Variant
+      value: Restore Chakra
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_IsActive

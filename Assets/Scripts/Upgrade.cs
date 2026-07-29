@@ -9,13 +9,13 @@ public class Upgrade : MonoBehaviour {
     [SerializeField] public GameObject confirmButton;
     [HideInInspector] public bool isCollectible;
 
+    PlayerController playerController;
+
+
     void Start() {
         descriptionText.text = upgradeInfo.description;
         confirmButton.SetActive(false);
-    }
-
-    void Update() {
-        descriptionText.text = upgradeInfo.description + " (" + upgradeInfo.count + " left)";
+        playerController = FindAnyObjectByType<PlayerController>();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -35,10 +35,11 @@ public class Upgrade : MonoBehaviour {
     }
 
     public void Collect() {
-
-
         if(upgradeInfo.heartsRestored > 0) {
-            // TODO
+            playerController.GetComponent<PlayerHealth>().Healed(upgradeInfo.heartsRestored);
+        }
+        if (upgradeInfo.chakraGained > 0) {
+            playerController.GetComponent<NinjaChakraManager>().RestoreChakra(upgradeInfo.chakraGained);
         }
 
         upgradeInfo.count -= 1;
@@ -52,7 +53,7 @@ public struct UpgradeInfo {
     public string description;
     [Tooltip("The bigger, the more often this upgrade will appear")]
     public int weight;
-    [Tooltip("How many times the upgrade can appear. -1 for infinite")]
+    [Tooltip("How many times the upgrade can appear")]
     public int count;
 
     public int heartsRestored;

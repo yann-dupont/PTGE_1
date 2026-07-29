@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8877954805953780086
+--- !u!1001 &7551395346687213295
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -18,11 +18,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.description
-      value: Upgrade 3
+      value: Restore 5 hearts
+      objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.heartsRestored
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_Name
-      value: Upgrade (3) Variant
+      value: 5 Health Restore
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_IsActive

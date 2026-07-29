@@ -50,5 +50,10 @@ public class NinjaChakraManager : MonoBehaviour
             UpdateChakraBar();
         }
     }
+
+    public void RestoreChakra(float amount) {
+        currentChakraAmount = Mathf.Max(currentChakraAmount + amount, maxChakraAmount);
+        UpdateChakraBar();
+    }
 }
 

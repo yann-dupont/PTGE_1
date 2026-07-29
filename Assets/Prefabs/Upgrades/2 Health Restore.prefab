@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7551395346687213295
+--- !u!1001 &4414212868537934294
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,19 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.count
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
-      propertyPath: upgradeInfo.weight
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.description
-      value: Upgrade 2
+      value: Restore 2 hearts
+      objectReference: {fileID: 0}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.heartsRestored
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_Name
-      value: Upgrade (2) Variant
+      value: 2 Health Restore
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_IsActive
