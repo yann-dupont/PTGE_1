@@ -37,7 +37,8 @@
 
 # Unity YAML files
 *.anim                  unity-yaml
-*.asset                 unity-yaml
+*.terrain.asset binary
+*.asset                 unity-yaml eol=lf
 *.brush                 unity-yaml
 *.controller            unity-yaml
 *.flare                 unity-yaml
