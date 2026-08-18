@@ -29,11 +29,11 @@ public class LazyPanelUI : MonoBehaviour
 
     private void OnMenuStarted(InputAction.CallbackContext ctx)
     {
-        panel.SetActive(true);
+        panel?.SetActive(true);
     }
 
     private void OnMenuCanceled(InputAction.CallbackContext ctx)
     {
-        panel.SetActive(false);
+        panel?.SetActive(false);
     }
 }

@@ -127,6 +127,8 @@ public partial class PlayerController : MonoBehaviour
 			rb.linearVelocity = Vector3.Lerp(rb.linearVelocity.normalized * currentMaxSpeed, rb.linearVelocity, 0.2f * Time.fixedDeltaTime);
 		}
 
+		PlayMovementAnimation();
+
         if (currentUpgrade && currentUpgrade.isCollectible && currentUpgrade.upgradeInfo.price <= scoreUpdater.Score && input.Player.Interact.IsPressed()) {
             currentUpgrade.Collect();
 			scoreUpdater.IncrementScore(-currentUpgrade.upgradeInfo.price);
