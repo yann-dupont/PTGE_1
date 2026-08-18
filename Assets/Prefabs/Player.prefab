@@ -183,6 +183,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 787b8b5808dffe1428e4faf7d4c888f5, type: 3}
   - {fileID: 8300000, guid: 1f3964e974919df46be035c0e4af54f3, type: 3}
   - {fileID: 8300000, guid: cd4d84ee4719cc641a40ee9f963acdcb, type: 3}
+  currentUpgrade: {fileID: 0}
   scoreUpdater: {fileID: 0}
 --- !u!114 &134937912155254511
 MonoBehaviour:
@@ -422,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9750c67196c9ba942ab71e099a3b3c62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.389
+      value: -1.151
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9750c67196c9ba942ab71e099a3b3c62, type: 3}
       propertyPath: m_LocalPosition.z

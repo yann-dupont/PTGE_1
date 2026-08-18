@@ -15,14 +15,7 @@ public partial class PlayerController
             return;
 
         Vector2 horizontalMovement = new Vector2(rb.linearVelocity.x, rb.linearVelocity.z);
-        if ((int)horizontalMovement.magnitude == 0)
-        {
-            animator.SetBool("isMoving", false);
-        }
-        else
-        {
-            animator.SetBool("isMoving", true);
-        }
+        animator.SetBool("isMoving", (int)horizontalMovement.magnitude != 0);
     }
 
     private void PlayNinjaSignAnimation(NinjaSignDescriptor sign)
