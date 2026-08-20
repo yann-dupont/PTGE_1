@@ -11,13 +11,15 @@ public class ScoreUpdater : MonoBehaviour
     public float Score => score;
 
     void Start() {
+        this.score = GameplayManager.instance.playerScore;
         UpdateScoreDisplay();
-        SetPreScore(0);
+        SetPreScore(GameplayManager.instance.playerPreScore);
     }
 
     public void IncrementScore(float score)
     {
         this.score += score;
+        GameplayManager.instance.playerScore = this.score;
         UpdateScoreDisplay();
     }
 
@@ -28,10 +30,12 @@ public class ScoreUpdater : MonoBehaviour
             if (collected != 0)
             {
                 preScoreText.text = $"In Nana's pockets: {Mathf.RoundToInt(collected)}";
+                GameplayManager.instance.playerPreScore = collected;
             }
             else
             {
                 preScoreText.text = "";
+                GameplayManager.instance.playerPreScore = 0;
             }
         }
     }

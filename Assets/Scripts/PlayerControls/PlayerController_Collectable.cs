@@ -10,6 +10,11 @@ public partial class PlayerController
 
     [SerializeField] private ScoreUpdater scoreUpdater;
 
+    private void Start()
+    {
+        collected = GameplayManager.instance.playerPreScore;
+    }
+
     private void HandleCollectableCollisionEnter(Collision collision)
     {
         if (!currentCollectable && collision.gameObject.CompareTag("Collectable"))

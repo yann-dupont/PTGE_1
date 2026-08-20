@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private GameObject stockContainer;
     [SerializeField] private GameObject heartPrefab;
-    [SerializeField] private int maxHealth;
+    private int maxHealth;
     
     private List<Heart> healthPoints = new List <Heart>();
     private int currentHealth;
@@ -15,7 +15,8 @@ public class PlayerHealth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentHealth = 1;
+        maxHealth = GameplayManager.instance.playerMaxHealth; 
+        currentHealth = GameplayManager.instance.playerHealth;
         for (int i = 0; i < maxHealth; i++)
         {
             healthPoints.Add(Instantiate(heartPrefab, stockContainer.transform).GetComponent<Heart>());
@@ -31,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = 0;
             //TBD : add Game Over
         }
+        GameplayManager.instance.playerHealth = currentHealth;
         UpdateHealthUI();
     }
 
@@ -41,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        GameplayManager.instance.playerHealth = currentHealth;
         UpdateHealthUI();
     }
 

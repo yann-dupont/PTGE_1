@@ -9,15 +9,16 @@ public class NinjaChakraManager : MonoBehaviour
     [SerializeField] Image chakraBar;
     
     [Header("ChakraJaugedata")]
-    [SerializeField] private float maxChakraAmount;
     [SerializeField] private int chakraGainRate = 1;
     private float currentChakraAmount;
+    private float maxChakraAmount;
     public float CurrentChakraAmount => currentChakraAmount;
     
 
     private void Start()
     {
-        currentChakraAmount = maxChakraAmount;
+        maxChakraAmount = GameplayManager.instance.playerMaxShakra;
+        currentChakraAmount = GameplayManager.instance.playerShakra;
         UpdateChakraBar();
         Debug.Log("NinjaChakraManager Start : " + CurrentChakraAmount);
     }
@@ -29,6 +30,7 @@ public class NinjaChakraManager : MonoBehaviour
         {
             currentChakraAmount = 0;
         }
+        GameplayManager.instance.playerShakra = currentChakraAmount;
         Debug.Log("NinjaChakraManager ConsumeChakra : " + CurrentChakraAmount);
         UpdateChakraBar();
     }
@@ -47,12 +49,14 @@ public class NinjaChakraManager : MonoBehaviour
             {
                 currentChakraAmount = maxChakraAmount;
             }
+            GameplayManager.instance.playerShakra = currentChakraAmount;
             UpdateChakraBar();
         }
     }
 
     public void RestoreChakra(float amount) {
         currentChakraAmount = Mathf.Max(currentChakraAmount + amount, maxChakraAmount);
+        GameplayManager.instance.playerShakra = currentChakraAmount;
         UpdateChakraBar();
     }
 }
