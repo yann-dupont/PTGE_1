@@ -59,7 +59,7 @@ public class Collectable : MonoBehaviour
     }
 
     public void CollectedEffect() {
-        tutoManager.RegisterResourceCollected();
+        tutoManager?.RegisterResourceCollected();
         soundManager.PlaySound(collectSoundSource, collectClips, createTempSource:true);
     }
 }
