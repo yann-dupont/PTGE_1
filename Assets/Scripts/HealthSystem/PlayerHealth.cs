@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthUI();
     }
     
-    void TakeDamaged(int damage)
+    public void TakeDamaged(int damage)
     {
         currentHealth -= damage;
         if (currentHealth < 0)

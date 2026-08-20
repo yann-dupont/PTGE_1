@@ -87,10 +87,28 @@ public class FireballSpell : Spell
         switch (collision.gameObject.tag)
         {
             case "Player":
-                break;
-            
-            default:
+
+                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                if (playerHealth)
+                {
+                    playerHealth.TakeDamaged(1);
+                }
+
                 Destroy(gameObject);
+                break;
+            case "TransparentFX": // TransparentFX is the enemy... but for some reason assigning anything's tag to anything above "Water" stops rendering them...
+                {
+                    Enemy enermy = collision.gameObject.GetComponent<Enemy>();
+                    if (enermy)
+                    {
+                        enermy.TakeDamage(1);
+                    }
+
+                    Destroy(gameObject);
+                    break;
+                }
+
+            default:
                 break;
                 
         }

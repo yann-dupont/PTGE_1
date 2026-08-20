@@ -3924,6 +3924,7 @@ GameObject:
   - component: {fileID: 431012190}
   - component: {fileID: 431012189}
   - component: {fileID: 431012188}
+  - component: {fileID: 431012191}
   m_Layer: 0
   m_Name: TentEntry
   m_TagString: Untagged
@@ -4024,6 +4025,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431012186}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &431012191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431012186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa1dee378e5a4c4ab92bf4e4209e307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelDoor
+  levelToLoad: Tent
 --- !u!4 &431440561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b92fa222180f360418f969edddd72c3a, type: 3}
@@ -7721,6 +7735,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6721412949723261072, guid: 3d6ee73ce0cc2f34fb0943aee27b056a, type: 3}
   m_PrefabInstance: {fileID: 795807923}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &799799193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799799195}
+  - component: {fileID: 799799194}
+  m_Layer: 0
+  m_Name: GameplayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &799799194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799799193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6739205aaed0e40bb5fe9ca6984858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayManager
+--- !u!4 &799799195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799799193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.5, y: 1.70286, z: 11.22098}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &803390750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1529357357214543644, guid: 3e485de8c926c8e40b046b351ef92c44, type: 3}
@@ -20333,6 +20391,7 @@ GameObject:
   - component: {fileID: 7776693962748337724}
   - component: {fileID: 7104684870977220877}
   - component: {fileID: 2543323853252696379}
+  - component: {fileID: 8917248623216535990}
   m_Layer: 0
   m_Name: SkullEntry
   m_TagString: Untagged
@@ -20340,6 +20399,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!114 &8917248623216535990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8917248623216535989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa1dee378e5a4c4ab92bf4e4209e307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelDoor
+  levelToLoad: Skull
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -20364,3 +20436,4 @@ SceneRoots:
   - {fileID: 631238896}
   - {fileID: 355438336}
   - {fileID: 1564884443}
+  - {fileID: 799799195}
