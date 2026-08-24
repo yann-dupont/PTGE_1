@@ -104,6 +104,7 @@ public class Enemy : MonoBehaviour
             // Attack
             FireballSpell fireballSpell = Instantiate(projectile, transform.position, transform.rotation).GetComponent<FireballSpell>();
             fireballSpell.Init(3, transform.forward, true);
+            gameObject.GetComponent<AudioSource>().Play();
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacking);
