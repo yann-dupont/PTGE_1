@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private GameObject stockContainer;
     [SerializeField] private GameObject heartPrefab;
+    [SerializeField] private GameObject deathscreen;
+
     private int maxHealth;
     
     private List<Heart> healthPoints = new List <Heart>();
@@ -30,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth < 0)
         {
             currentHealth = 0;
+            deathscreen.SetActive(true);
             //TBD : add Game Over
         }
         GameplayManager.instance.playerHealth = currentHealth;

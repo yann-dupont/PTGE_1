@@ -7191,6 +7191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6739205aaed0e40bb5fe9ca6984858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayManager
+  playerHealth: 1
+  playerMaxHealth: 5
+  playerShakra: 100
+  playerMaxShakra: 100
+  playerScore: 0
+  playerPreScore: 0
 --- !u!4 &799799195
 Transform:
   m_ObjectHideFlags: 0
@@ -19035,6 +19041,11 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 8324565686288205891, guid: 724b17f9e0b699144898d2149e140900, type: 3}
   m_PrefabInstance: {fileID: 455013339293942025}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &455013339293942028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5623668035842363020, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+  m_PrefabInstance: {fileID: 455013339293942025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &839475574554442664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20800,6 +20811,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2999202002397355741, guid: dad312fa01416e142811170d7eea6082, type: 3}
+      propertyPath: deathscreen
+      value: 
+      objectReference: {fileID: 455013339293942028}
     - target: {fileID: 2999202002397355741, guid: dad312fa01416e142811170d7eea6082, type: 3}
       propertyPath: stockContainer
       value: 
