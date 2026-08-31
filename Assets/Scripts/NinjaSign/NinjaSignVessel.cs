@@ -34,6 +34,8 @@ public class NinjaSignVessel : MonoBehaviour {
 	public IEnumerable<NinjaSignDescriptor> NinjaSigns => ninjaSigns;
 	public IEnumerable<NinjaSignCombination> NinjaSignCombinations => ninjaSignCombinations;
 	
+	private static List<NinjaSignCombination> persistedCombinations = new List<NinjaSignCombination>();
+
 	private void Awake() {
 		if (HasIsntance(gameObject.scene)) {
 			Debug.Log("Ok buddy.");
@@ -41,6 +43,7 @@ public class NinjaSignVessel : MonoBehaviour {
 		} else {
 			LoadAllResources();
 			instances.Add(gameObject.scene, this);
+			RestorePersistedCombinations();
             tutoManager = FindAnyObjectByType<TutoManager>();
         }
 	}
@@ -73,7 +76,7 @@ public class NinjaSignVessel : MonoBehaviour {
 			INinjaCombinationScript foundScriptToActivate = foundCombination.ScriptToActivate;
 			if (foundScriptToActivate != null) {
 				foundScriptToActivate.Activate(CreateScriptData(foundCombination));
-                tutoManager.RegisterComboUsed();
+                if (tutoManager != null) {tutoManager.RegisterComboUsed();}
             } else {
 				Debug.Log($"Combination activated '{foundCombination.DisplayName}', but no valid script was found to activate.");	
 			}
@@ -84,8 +87,19 @@ public class NinjaSignVessel : MonoBehaviour {
 		return foundCombination != null;
 	}
 
+	private void RestorePersistedCombinations() {
+		foreach (NinjaSignCombination combo in persistedCombinations) {
+			if (!ninjaSignCombinations.Contains(combo)) {
+				ninjaSignCombinations.Add(combo);
+			}
+		}
+	}
+
 	public void AddNinjaSignCombination(NinjaSignCombination ninjaSignCombination) {
 		this.ninjaSignCombinations.Add(ninjaSignCombination);
+		if (!persistedCombinations.Contains(ninjaSignCombination)) {
+			persistedCombinations.Add(ninjaSignCombination);
+		}
 	}
 
 
