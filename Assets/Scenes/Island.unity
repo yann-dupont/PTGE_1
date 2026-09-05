@@ -19010,10 +19010,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8873031471989323509, guid: 724b17f9e0b699144898d2149e140900, type: 3}
-      propertyPath: m_fontSize
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873031471989323509, guid: 724b17f9e0b699144898d2149e140900, type: 3}
       propertyPath: m_fontSizeBase
       value: 64
       objectReference: {fileID: 0}
