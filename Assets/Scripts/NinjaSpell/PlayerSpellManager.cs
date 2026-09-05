@@ -40,6 +40,11 @@ public class PlayerSpellManager : MonoBehaviour
                 HealSpell healSpell = Instantiate(spellPrefab, transform.position, spellSpawnPoint.rotation,transform).GetComponent<HealSpell>();
                 healSpell.Init(gameObject.GetComponent<PlayerHealth>(), withPerfectDirection);
                 break;
+
+            case TomatoSpell:
+                TomatoSpell tomatospell = Instantiate(spellPrefab, transform.position, spellSpawnPoint.rotation).GetComponent<TomatoSpell>();
+                tomatospell.Init(withPerfectDirection);
+                break;
         }
     }
 

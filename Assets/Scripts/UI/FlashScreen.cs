@@ -12,7 +12,10 @@ public class FlashScreen : MonoBehaviour {
 	private CanvasGroup canvasGroup;
 
 	[SerializeField]
-	private float timeToFlash = 1f;
+	private float holdTime = 1f; // temps où le message reste pleinement visible
+
+	[SerializeField]
+	private float fadeTime = 1f; // temps du fondu de disparition
 
 	private float flashTimer = 0f;
 	
@@ -43,7 +46,7 @@ public class FlashScreen : MonoBehaviour {
 		}
 	}
 
-	public void Display(string withMessage) {
+	public void Display(string withMessage, float? customHoldTime = null, float? customFadeTime = null) {
 		if (textBlock) {
 			textBlock.text = withMessage;
 		}
@@ -53,19 +56,26 @@ public class FlashScreen : MonoBehaviour {
 			displayCoroutine = null;
 		}
 		
-		displayCoroutine = StartCoroutine(DisplayRoutine());
+		float hold = customHoldTime ?? holdTime;
+		float fade = customFadeTime ?? fadeTime;
+		
+		displayCoroutine = StartCoroutine(DisplayRoutine(hold, fade));
 	}
 
-	public IEnumerator DisplayRoutine() {
+	public IEnumerator DisplayRoutine(float hold, float fade) {
 		flashTimer = 0f;
 		if (canvasGroup) {
 			canvasGroup.alpha = 1f;
 		}
 
-		while (flashTimer < timeToFlash) {
+		// Phase 1 : reste pleinement visible
+		yield return new WaitForSeconds(hold);
+
+		// Phase 2 : fondu de disparition
+		while (flashTimer < fade) {
 			yield return null;
 			flashTimer += Time.deltaTime;
-			canvasGroup.alpha = 1f - (flashTimer / timeToFlash);
+			canvasGroup.alpha = 1f - (flashTimer / fade);
 		}
 
 		if (canvasGroup) {

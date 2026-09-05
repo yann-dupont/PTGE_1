@@ -198,8 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NinjaChakraManager
   chakraBar: {fileID: 0}
-  maxChakraAmount: 100
-  chakraGainRate: 2
+  chakraGainRate: 5
 --- !u!114 &2999202002397355741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +213,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   stockContainer: {fileID: 0}
   heartPrefab: {fileID: 1000010820938182, guid: 7c8e8b5b1558faf4197338ae74bf3275, type: 3}
-  maxHealth: 5
+  deathscreen: {fileID: 0}
+  stunEffectPrefab: {fileID: 835286925940817550, guid: 858510f0df609dd49b0bc9e39453acfe, type: 3}
+  headHeight: 1
 --- !u!114 &9143958465375962129
 MonoBehaviour:
   m_ObjectHideFlags: 0

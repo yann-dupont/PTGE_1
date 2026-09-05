@@ -9,7 +9,7 @@ public class NinjaChakraManager : MonoBehaviour
     [SerializeField] Image chakraBar;
     
     [Header("ChakraJaugedata")]
-    [SerializeField] private int chakraGainRate = 1;
+    [SerializeField] private int chakraGainRate = 60;
     private float currentChakraAmount;
     private float maxChakraAmount;
     public float CurrentChakraAmount => currentChakraAmount;

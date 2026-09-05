@@ -32,6 +32,8 @@ public partial class PlayerController : MonoBehaviour
 	private float dashTime;
 	private float lastDashTime;
 
+	private bool actionsDisabled = false;
+
     [Header("Camera")]
 	[SerializeField] private CameraController cameraController;
 
@@ -72,6 +74,11 @@ public partial class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
+		if (actionsDisabled)
+		{
+			moveInput=Vector2.zero;
+			return;
+		}
 		moveInput = input.Player.Move.ReadValue<Vector2>();
 		HandleCameraInput();
 		if (input.Player.Sprint.WasPressedThisFrame())
@@ -219,7 +226,7 @@ public partial class PlayerController : MonoBehaviour
         }
     }
 
-    private void EnablePlayerMovement() 
+    public void EnablePlayerMovement() 
 	{
         input.Player.Move.Enable();
 		input.Player.Sprint.Enable();
@@ -227,9 +234,10 @@ public partial class PlayerController : MonoBehaviour
         input.Player.LookNorth.Enable();
         input.Player.LookNorth.Enable();
         input.Player.LookNorth.Enable();
+		actionsDisabled = false;
 	}
 
-	private void DisablePlayerMovement()
+	public void DisablePlayerMovement()
 	{
         input.Player.Move.Disable();
 		input.Player.Sprint.Disable();
@@ -237,5 +245,6 @@ public partial class PlayerController : MonoBehaviour
         input.Player.LookNorth.Disable();
         input.Player.LookNorth.Disable();
         input.Player.LookNorth.Disable();
+		actionsDisabled = true;
 	}
 }

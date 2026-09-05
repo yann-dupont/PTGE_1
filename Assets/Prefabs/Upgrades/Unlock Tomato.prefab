@@ -14,23 +14,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.price
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.weight
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.description
-      value: Unlock combo Test_2
+      value: Unlock combo TOMATO
       objectReference: {fileID: 0}
     - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: upgradeInfo.comboUnlocked
       value: 
       objectReference: {fileID: 11400000, guid: 8a4269a6dfd0fbd4694b0d34c4fe9b12, type: 2}
+    - target: {fileID: 63523625474666128, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
+      propertyPath: upgradeInfo.specialcondition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_Name
-      value: Unlock Combo Test 2
+      value: Unlock Tomato
       objectReference: {fileID: 0}
     - target: {fileID: 1826810656594272595, guid: d6c4f8c560b45aa40b090c85d365f287, type: 3}
       propertyPath: m_IsActive

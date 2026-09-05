@@ -15,8 +15,11 @@ public abstract class Spell : MonoBehaviour
     protected virtual void Awake()
     {
         Debug.Log("Spell : " + name + " Awake");
-        visualEffect.enabled = true;
-        visualEffect.SendEvent("OnPlay");
+        if (visualEffect != null){
+            visualEffect.enabled = true;
+            visualEffect.SendEvent("OnPlay");
+        }
+        
         
     }
 

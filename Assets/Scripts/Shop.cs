@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour {
     [SerializeField] GameObject[] upgradePrefabs;
     [SerializeField] Transform[] upgradeSlots;
     [SerializeField] Animator shopAnimator;
+    [SerializeField] GameObject[] upgradePrefabs2; //unlocked after
 
     List<GameObject> upgradePool;
     Upgrade[] upgradePoolInfo;
@@ -15,6 +16,10 @@ public class Shop : MonoBehaviour {
 
 
     void Start() {
+        if (GameplayManager.instance.IsTomatoUnlocked())
+        {
+            upgradePrefabs = upgradePrefabs.Concat(upgradePrefabs2).ToArray();
+        }
         upgradePool = new List<GameObject>();
         foreach (GameObject upgradePrefab in upgradePrefabs) {
             GameObject upgradeGO = Instantiate(upgradePrefab, transform);
@@ -28,8 +33,10 @@ public class Shop : MonoBehaviour {
         }
 
         currentAvailableUpgrades = new GameObject[upgradeSlots.Length];
-
-        //StartCoroutine(TestSpawnUpgrade());
+        if (GameplayManager.instance.isTutoDone())
+        {
+            StartCoroutine(TestSpawnUpgrade());
+        }
     }
 
     IEnumerator TestSpawnUpgrade() {

@@ -62,6 +62,10 @@ MonoBehaviour:
   timeBetweenAttacking: 3
   sightRange: 15
   attackRange: 10
+  isBoss: 0
+  enemyID: 
+  stunEffectPrefab: {fileID: 835286925940817550, guid: 858510f0df609dd49b0bc9e39453acfe, type: 3}
+  headHeight: 5
 --- !u!195 &2336777228744476971
 NavMeshAgent:
   m_ObjectHideFlags: 0

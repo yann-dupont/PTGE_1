@@ -65,6 +65,6 @@ public struct UpgradeInfo {
 
     public int heartsRestored;
     public float chakraGained;
-    public NinjaSignCombination comboUnlocked;
+    public NinjaSignCombination comboUnlocked; 
 
 }

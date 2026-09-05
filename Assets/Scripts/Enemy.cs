@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,6 +24,20 @@ public class Enemy : MonoBehaviour
     public float sightRange, attackRange;
     bool playerInSightRange, playerInAttackRange;
 
+    //for the boss
+    public bool isBoss;
+
+    //for no respawn, on veut finir le jeu quoiii
+    public string enemyID;
+
+    // Stun
+    private bool isStunned = false;
+    private Coroutine stunCoroutine;
+    [Header("Stun VFX")]
+    [SerializeField] private GameObject stunEffectPrefab;
+    [SerializeField] private float headHeight = 2f;
+    private GameObject currentStunEffect;
+
     private void Awake()
     {
         if (!player)
@@ -34,10 +49,31 @@ public class Enemy : MonoBehaviour
             agent = GetComponent<NavMeshAgent>();
         }
 
+        if (isBoss)
+        {
+            //GetComponent<Renderer>().material.color = Color.red;
+            var rend = GetComponentInChildren<Renderer>();
+            if (rend != null)
+            {
+                rend.material.color = Color.red;
+            }
+            else
+            {
+                Debug.LogError("fuck");
+            }
+        }
+
+        if (GameplayManager.instance.IsEnemyDefeated(enemyID))
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void Update()
     {
+        if (isStunned) return;
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -123,6 +159,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("Dégâts reçus" + health, this.gameObject);
         if (health <= 0)
         {
+            GameplayManager.instance.MarkEnemyDefeated(enemyID);
             Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
@@ -130,5 +167,32 @@ public class Enemy : MonoBehaviour
     private void DestroyEnemy()
     {
         Destroy(gameObject);
+    }
+
+    public void Stun(float duration = 3f)
+    {
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+        }
+        stunCoroutine = StartCoroutine(StunRoutine(duration));
+    }
+
+    private IEnumerator StunRoutine(float duration)
+    {
+        isStunned = true;
+        agent.isStopped = true;
+
+        if (stunEffectPrefab != null)
+        {
+            Vector3 spawnPosition = transform.position + Vector3.up * headHeight;
+            currentStunEffect = Instantiate(stunEffectPrefab, spawnPosition, Quaternion.identity, transform);
+        }
+
+        yield return new WaitForSeconds(duration);
+
+        agent.isStopped = false;
+        isStunned = false;
+        stunCoroutine = null;
     }
 }

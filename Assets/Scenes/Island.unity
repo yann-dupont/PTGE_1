@@ -17409,12 +17409,13 @@ MonoBehaviour:
   - {fileID: 7092877247134824485, guid: 3bab9577cac25094d9e52dede6ebce72, type: 3}
   - {fileID: 8574745880026688172, guid: d48d2691d30395d498f376d9754bfe3c, type: 3}
   - {fileID: 2322027483295682681, guid: e00c0ca5608f7524cbba403b417ac45f, type: 3}
-  - {fileID: 2322027483295682681, guid: 910c63f9ca1125745891955957c1596f, type: 3}
   upgradeSlots:
   - {fileID: 1422708794}
   - {fileID: 1325771134}
   - {fileID: 1795455959}
   shopAnimator: {fileID: 955717841812137076}
+  upgradePrefabs2:
+  - {fileID: 2322027483295682681, guid: 910c63f9ca1125745891955957c1596f, type: 3}
 --- !u!1001 &1990170309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19003,6 +19004,18 @@ PrefabInstance:
     - target: {fileID: 6943707477022339682, guid: 724b17f9e0b699144898d2149e140900, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015348625061247573, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873031471989323509, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+      propertyPath: m_fontSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873031471989323509, guid: 724b17f9e0b699144898d2149e140900, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 9128227894139060571, guid: 724b17f9e0b699144898d2149e140900, type: 3}
       propertyPath: m_AnchorMax.y

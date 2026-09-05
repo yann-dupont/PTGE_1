@@ -21,6 +21,11 @@ public class TutoManager : MonoBehaviour {
         combosTuto.SetActive(false);
         directionalComboTuto.SetActive(false);
         ninjaArea.alpha = 0f;
+        if (GameplayManager.instance.isTutoDone())
+        {
+            FindAnyObjectByType<Shop>().SpawnUpgrades();
+            ninjaArea.alpha = 1f;
+        }
     }
 
     public void RegisterResourceCollected() {
@@ -41,6 +46,7 @@ public class TutoManager : MonoBehaviour {
         combosTuto.SetActive(true);
         FindAnyObjectByType<Shop>().SpawnUpgrades();
         ninjaArea.alpha = 1f;
+        GameplayManager.instance.TutoDone();
     }
 
     public void RegisterComboUsed() {

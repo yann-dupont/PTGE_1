@@ -15,5 +15,8 @@ MonoBehaviour:
   signsToActivate:
   - {fileID: 11400000, guid: fa93f038460239949a9d11477394a9c9, type: 2}
   - {fileID: 11400000, guid: e36e55683f80b0245a161ea0343e5307, type: 2}
-  displayName: Test 2
-  scriptType: NinjaCombinationScript_Test2
+  displayName: Tomato
+  scriptType: NinjaCombinationScript_Spell
+  isASpell: 1
+  spellPrefab: {fileID: 7221303079721929553, guid: 3047ae5ab12543a4ba08a37806af483c, type: 3}
+  InputActionToHold: {fileID: 0}
