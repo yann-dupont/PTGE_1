@@ -33,7 +33,7 @@ public class PlayerSpellManager : MonoBehaviour
         {
             case FireballSpell:
                 FireballSpell fireballSpell = Instantiate(spellPrefab, spellSpawnPoint.position, spellSpawnPoint.rotation).GetComponent<FireballSpell>();
-                fireballSpell.Init(GetComponent<Rigidbody>().linearVelocity.magnitude, spellSpawnPoint.forward, withPerfectDirection);
+                fireballSpell.Init(GetComponent<Rigidbody>().linearVelocity.magnitude, spellSpawnPoint.forward, withPerfectDirection,this.tag);
                 break;
             
             case HealSpell:

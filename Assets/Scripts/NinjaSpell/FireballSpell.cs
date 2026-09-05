@@ -14,7 +14,7 @@ public class FireballSpell : Spell
     private float currentVelocity;
     private Vector3 direction;
     private float timer = 0f;
-    
+    private string _casterTag;
 
     private const string _fireballTrailsActiveString = "FireballTrailsActive";
 
@@ -24,11 +24,12 @@ public class FireballSpell : Spell
         _fireball  = GetComponent<Rigidbody>();
     }
 
-    public void Init(float startingVelocity, Vector3 direction, bool withPerfectDirection)
+    public void Init(float startingVelocity, Vector3 direction, bool withPerfectDirection, string casterTag = "none")
     {
         timer = 0f;
         currentVelocity = startingVelocity;
         this.direction = direction;
+        _casterTag=casterTag;
 
         if (withPerfectDirection)
         {
@@ -84,10 +85,11 @@ public class FireballSpell : Spell
 
     protected override void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.tag);
         switch (collision.gameObject.tag)
         {
             case "Player":
-
+                if (collision.gameObject.tag == _casterTag){break;};
                 PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
                 if (playerHealth)
                 {
@@ -96,8 +98,9 @@ public class FireballSpell : Spell
 
                 Destroy(gameObject);
                 break;
-            case "TransparentFX": // TransparentFX is the enemy... but for some reason assigning anything's tag to anything above "Water" stops rendering them...
+            case "Untagged": 
                 {
+                    if (collision.gameObject.tag == _casterTag){break;};
                     Enemy enermy = collision.gameObject.GetComponent<Enemy>();
                     if (enermy)
                     {

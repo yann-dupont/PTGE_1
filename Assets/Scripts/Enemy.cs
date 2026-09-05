@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
         {
             // Attack
             FireballSpell fireballSpell = Instantiate(projectile, transform.position, transform.rotation).GetComponent<FireballSpell>();
-            fireballSpell.Init(3, transform.forward, true);
+            fireballSpell.Init(3, transform.forward, true,this.tag);
             gameObject.GetComponent<AudioSource>().Play();
 
             alreadyAttacked = true;
@@ -118,8 +118,9 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
         health -= damage;
-
+        Debug.Log("Dégâts reçus" + health, this.gameObject);
         if (health <= 0)
         {
             Invoke(nameof(DestroyEnemy), 0.5f);
